@@ -39,7 +39,7 @@ namespace KinoPoiskAutomatedTests.TestData
         public static string GetMovieName()
         {
             var movieData = new DataParams();
-            movieData = DataSerializer.JsonDeserialize(typeof(DataParams), Globals.PasswordPath) as DataParams;
+            movieData = DataSerializer.JsonDeserialize(typeof(DataParams), Globals.MoviePath) as DataParams;
             StringBuilder stringBuilder = new StringBuilder();
 
             foreach (string value in movieData.Str)

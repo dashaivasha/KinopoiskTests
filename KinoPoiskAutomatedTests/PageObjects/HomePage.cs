@@ -16,7 +16,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
         [CacheLookup]
         public IWebElement AuthorizedAccount { get; }
 
-        [FindsBy(How = How.XPath, Using = "//input[@name='kp_query']")]
+        [FindsBy(How = How.XPath, Using = "//input[@type='search']")]
         [CacheLookup]
         public IWebElement SearchInput { get; set; }
 
@@ -24,7 +24,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
         [CacheLookup]
         public IWebElement SearchButton { get; set; }
 
-        public IWebElement SelectFilm = HomePage.driver.FindElement(By.XPath($"//p[contains(text(),{JsonManager.GetMovieName()})]"));
+        public IWebElement SelectFilm { get; set; }
 
         public bool IsLoggedIn()
         {

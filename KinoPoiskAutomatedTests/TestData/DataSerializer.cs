@@ -7,16 +7,6 @@ namespace KinoPoiskAutomatedTests.TestData
 {
     public class DataSerializer
     {
-        public static void JsonSerialize(object dataType, string filePath)
-        {
-            var jsonSerializer = new JsonSerializer();
-            var sw = new StreamWriter(filePath);
-            var jsonWr = new JsonTextWriter(sw);
-            jsonSerializer.Serialize(jsonWr, dataType);
-            jsonWr.Close();
-            sw.Close();
-        }
-
         public static object JsonDeserialize(Type dataType, string filePath)
         {
             try
