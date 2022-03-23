@@ -13,6 +13,6 @@ namespace KinoPoiskAutomatedTests.PageObjects
 
         [FindsBy(How = How.XPath, Using = "//*[@id='passp:sign-in']")]
         [CacheLookup]
-        public IWebElement SignIn { get; set; }       
+        public IWebElement SignIn { get; set; }
     }
 }
