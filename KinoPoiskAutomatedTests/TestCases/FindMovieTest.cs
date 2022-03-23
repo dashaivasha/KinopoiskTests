@@ -22,9 +22,11 @@ namespace KinoPoiskAutomatedTests.TestCases
             wait.Until(driver => homePage.SearchButton.Displayed);
             homePage.SearchButton.Click();  
             homePage.SearchInput.SendKeys(JsonManager.GetMovieName());
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(.//p,'') and contains(@class,'SuggestListItem')][1]")));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[contains(@class,'SuggestList')]")));
             homePage.SelectFilm = driver.FindElement(By.XPath("//div[contains(.//p,'') and contains(@class,'SuggestListItem')][1]"));
             homePage.SelectFilm.Click();
+            var filmPage = new FilmPage();
+            PageFactory.InitElements(driver, filmPage);
         }
     }
 }
