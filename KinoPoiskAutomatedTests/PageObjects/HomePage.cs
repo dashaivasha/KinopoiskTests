@@ -1,42 +1,46 @@
-﻿using KinoPoiskAutomatedTests.TestData;
+﻿using System;
+using KinoPoiskAutomatedTests.TestData;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class HomePage
+    public class HomePage 
     {
-        private static IWebDriver driver;
+        public TestDetails Data = JsonManager.GetTestData();
+        private By _myAccountButton = By.XPath("//button[contains(@class,'login')]");
+        private By _exitButton = By.XPath("//*[text()='Выйти']");
+        private By _searchButton = By.XPath("//div[contains(@class,'search')]/button");
+        private By _searchInput = By.XPath("//input[contains(@class,'search')]");
 
-        [FindsBy(How = How.XPath, Using = "//a[contains(@href,'passport.yandex.ru/auth?')]")]
-        [CacheLookup]
-        public IWebElement MyAccount { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[contains( @class,'userContainer')]")]
-        [CacheLookup]
-        public IWebElement AuthorizedAccount { get; }
-
-        [FindsBy(How = How.XPath, Using = "//input[@type='search']")]
-        [CacheLookup]
-        public IWebElement SearchInput { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//button[contains(@class,'search')]")]
-        [CacheLookup]
-        public IWebElement SearchButton { get; set; }
-
-        public IWebElement SelectFilm { get; set; }
-
-        public bool IsLoggedIn()
+        public void PressLogInButton(IWebDriver driver)
         {
-            if (AuthorizedAccount == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            driver.FindElement(_myAccountButton).Click();
+        }
 
+        public bool IsExitExist(IWebDriver driver)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait.Until(driver => driver.FindElement(_exitButton));
+            return driver.FindElement(_exitButton).Enabled;
+        }
+
+        public void EnterFilmName(IWebDriver driver, string filmName)
+        {
+            driver.FindElement(_searchInput).SendKeys(filmName);
+        }
+
+        public void FindFilm(IWebDriver driver)
+        {
+            driver.FindElement(_searchButton).Click();
+        }
+
+        public void SelectFilm(IWebDriver driver)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            By _rightFilm = By.XPath($"//h4[text()='{Data.FilmName}']//ancestor::div[contains(@class,'suggest-group')]");
+            wait.Until(driver => driver.FindElement(_rightFilm).Enabled);
+            driver.FindElement(_rightFilm).Click();
         }
     }
 }

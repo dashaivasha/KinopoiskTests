@@ -20,6 +20,7 @@
     <None Remove="BaseClass\" />
     <None Remove="TestData\" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="WebDriver\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
@@ -39,5 +40,6 @@
     <Folder Include="PageObjects\" />
     <Folder Include="BaseClass\" />
     <Folder Include="TestData\" />
+    <Folder Include="WebDriver\" />
   </ItemGroup>
 </Project>

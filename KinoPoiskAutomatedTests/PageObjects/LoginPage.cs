@@ -1,27 +1,23 @@
 ﻿using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
     public class LoginPage
     {
-        private IWebDriver driver;
+        private By UserIDInput = By.XPath("//*[@id='passp-field-login']");
+        private By EmailChoose = By.XPath("//div[@class='AuthLoginInputToggle-type'][2]/button");
+        private By Submit = By.XPath("//*[@id='passp:sign-in']");
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='AuthLoginInputToggle-type'][2]/button")]
-        [CacheLookup]
-        public IWebElement EmailChoose { get; set; }
+        public void EnterLoginAndSubmit(IWebDriver driver, string login)
+        {
+            if (IsEmailChooseExist())
+            {
+                driver.FindElement(EmailChoose).Click();
+            }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='passp-field-login']")]
-        [CacheLookup]
-        public IWebElement UserID { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//*[@id='passp:sign-in']")]
-        [CacheLookup]
-        public IWebElement Submit { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//*[@id='passp-field-passwd']")]
-        [CacheLookup]
-        public IWebElement Password { get; set; }
+            driver.FindElement(UserIDInput).SendKeys(login);
+            driver.FindElement(Submit).Submit();
+        }
 
         public bool IsEmailChooseExist()
         {
