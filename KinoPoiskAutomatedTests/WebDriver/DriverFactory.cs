@@ -6,12 +6,16 @@ namespace KinoPoiskAutomatedTests.WebDriver
 {
     public class DriverFactory
     {
+        private static IWebDriver _webDriver;
+
         public static IWebDriver GetDriver()
         {
-            IWebDriver webDriver;
-            webDriver = new ChromeDriver();
+            if (_webDriver == null)
+            {
+                _webDriver = new ChromeDriver();
+            }
 
-            return webDriver;
+            return _webDriver;
         }
     }  
 }

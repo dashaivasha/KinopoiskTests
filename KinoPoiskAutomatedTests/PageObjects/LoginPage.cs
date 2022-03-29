@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using KinoPoiskAutomatedTests.WebDriver;
+using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
@@ -8,8 +9,10 @@ namespace KinoPoiskAutomatedTests.PageObjects
         private By EmailChoose = By.XPath("//div[@class='AuthLoginInputToggle-type'][2]/button");
         private By Submit = By.XPath("//*[@id='passp:sign-in']");
 
-        public void EnterLoginAndSubmit(IWebDriver driver, string login)
+        public void EnterLoginAndSubmit(string login)
         {
+            var driver = DriverFactory.GetDriver();
+
             if (IsEmailChooseExist())
             {
                 driver.FindElement(EmailChoose).Click();
