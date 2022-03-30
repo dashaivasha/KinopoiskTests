@@ -5,33 +5,42 @@ using OpenQA.Selenium.Support.UI;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class FilmPage
+    public class FilmPage : DefaultPage
     {
-        private By _rating = By.XPath("//span[contains(@class,'rating')][1]");
-        private By _traillerButton = By.XPath("//button[text()='Трейлер']/..");
-        private By _trailerEnded = By.XPath("//div[contains(@class,'autoplay__Cancel')]");
-        private By _closeTrailler = By.XPath("//button[@class='discovery-trailers-closer']");
+        private IWebElement _rating => driver.FindElement(By.XPath("//span[contains(@class,'rating')][1]"));
+        private IWebElement _traillerButton => driver.FindElement(By.XPath("//button[text()='Трейлер']/.."));
+        private By _trailerEnded => By.XPath("//div[contains(@class,'autoplay')]");
+        private IWebElement _closeTrailler => driver.FindElement(By.XPath("//button[@class='discovery-trailers-closer']"));
+        private IWebElement _toWatchButton => driver.FindElement(By.XPath("//button[contains(@class,'ToWatch')]"));
+        private IWebElement _userFolders => driver.FindElement(By.XPath("//div[contains(@class,'userFolders')]/a"));
 
         public double GetRating()
         {
-            var driver = DriverFactory.GetDriver();
-            var rating = driver.FindElement(_rating).GetAttribute("textContent");
+            var rating = _rating.GetAttribute("textContent");
 
             return Convert.ToDouble(rating);
         }
 
         public void PlayTrailer()
         {
-            var driver = DriverFactory.GetDriver();
-            driver.FindElement(_traillerButton).Click();
+            _traillerButton.Click();
         }
 
         public void CloseTrailer()
         {
-            var driver = DriverFactory.GetDriver();
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(125));
-            wait.Until(driver => driver.FindElement(_trailerEnded));
-            driver.FindElement(_closeTrailler).Click();
+            WebDriverExtensions.FindElement(driver, _trailerEnded, 125);
+            _closeTrailler.Click();
+        }
+
+        public void AddMovieToFavorites()
+        {
+            driver.GetWait().Until(d => _toWatchButton.Enabled);
+            _toWatchButton.Click();
+        }
+
+        public void GotoUserFolders()
+        {
+            _userFolders.Click();
         }
     }
 }

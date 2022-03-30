@@ -1,8 +1,9 @@
 
     {
       "HomePageUrl": "https://www.kinopoisk.ru/",
-      "FilmName": "Смешарики",
+      "FilmPage":"https://www.kinopoisk.ru/film/427198/",
+      "FilmName": "Бесконечность",
       "Login": "internshiptestovitch",
-      "Password": "testpasstest123",
+      "Password": "testpasstest11",
       "Rating": "4"
     }

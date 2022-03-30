@@ -3,35 +3,15 @@ using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class LoginPage
+    public class LoginPage : DefaultPage
     {
-        private By UserIDInput = By.XPath("//*[@id='passp-field-login']");
-        private By EmailChoose = By.XPath("//div[@class='AuthLoginInputToggle-type'][2]/button");
-        private By Submit = By.XPath("//*[@id='passp:sign-in']");
+        private By _userIdInput  => By.XPath("//*[@id='passp-field-login']");
+        private IWebElement Submit => driver.FindElement(By.XPath("//*[@id='passp:sign-in']"));
 
         public void EnterLoginAndSubmit(string login)
         {
-            var driver = DriverFactory.GetDriver();
-
-            if (IsEmailChooseExist())
-            {
-                driver.FindElement(EmailChoose).Click();
-            }
-
-            driver.FindElement(UserIDInput).SendKeys(login);
-            driver.FindElement(Submit).Submit();
-        }
-
-        public bool IsEmailChooseExist()
-        {
-            if (EmailChoose == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            WebDriverExtensions.FindElement(driver,_userIdInput,10).SendKeys(login);
+            Submit.Submit();
         }
     }
 }

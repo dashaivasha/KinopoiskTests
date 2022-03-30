@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <None Remove="Selenium.WebDriver" />
-    <None Remove="TestCases\" />
     <None Remove="NUnit" />
     <None Remove="NUnit3TestAdapter" />
     <None Remove="Microsoft.NET.Test.Sdk" />
@@ -36,7 +35,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TestCases\" />
     <Folder Include="PageObjects\" />
     <Folder Include="BaseClass\" />
     <Folder Include="TestData\" />
