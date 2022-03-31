@@ -10,7 +10,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
 
         public void EnterLoginAndSubmit(string login)
         {
-            WebDriverExtensions.FindElement(driver,_userIdInput,10).SendKeys(login);
+            WebDriverExtensions.FindElement(driver,_userIdInput,Data.WaitTime).SendKeys(login);
             Submit.Submit();
         }
     }

@@ -20,8 +20,8 @@ namespace KinoPoiskAutomatedTests.PageObjects
 
         public void PressLogOutButton()
         {
-            WebDriverExtensions.FindElement(driver, _avatar, 10).Click();
-            WebDriverExtensions.FindElement(driver,_exitButton,10).Click();
+            WebDriverExtensions.FindElement(driver, _avatar, Data.WaitTime).Click();
+            WebDriverExtensions.FindElement(driver,_exitButton,Data.WaitTime).Click();
         }
 
         public bool IsExitExist()
@@ -31,7 +31,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
 
         public void EnterFilmName(string filmName)
         {
-            WebDriverExtensions.FindElement(driver, _searchInput, 10);
+            WebDriverExtensions.FindElement(driver, _searchInput, 60);
             var input = driver.FindElement(_searchInput);
             input.SendKeys(filmName);
         }
