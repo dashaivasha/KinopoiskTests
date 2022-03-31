@@ -1,6 +1,5 @@
 ﻿using KinoPoiskAutomatedTests.PageObjects;
 using KinoPoiskAutomatedTests.TestData;
-using KinoPoiskAutomatedTests.Tests;
 using KinoPoiskAutomatedTests.WebDriver;
 using NUnit.Framework;
 

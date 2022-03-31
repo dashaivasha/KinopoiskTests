@@ -1,7 +1,6 @@
 ﻿using System;
 using KinoPoiskAutomatedTests.WebDriver;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
@@ -9,8 +8,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
     {
         private IWebElement _rating => driver.FindElement(By.XPath("//span[contains(@class,'rating')][1]"));
         private IWebElement _traillerButton => driver.FindElement(By.XPath("//button[text()='Трейлер']/.."));
-        private By _trailerEnded => By.XPath("//div[contains(@class,'autoplay')]");
-        private IWebElement _closeTrailler => driver.FindElement(By.XPath("//button[@class='discovery-trailers-closer']"));
+        private By _trailerEnded => By.XPath("//div[contains(@class,'autoplay')][1]");
         private IWebElement _toWatchButton => driver.FindElement(By.XPath("//button[contains(@class,'ToWatch')]"));
         private IWebElement _userFolders => driver.FindElement(By.XPath("//div[contains(@class,'userFolders')]/a"));
 
@@ -23,23 +21,25 @@ namespace KinoPoiskAutomatedTests.PageObjects
 
         public void PlayTrailer()
         {
+            driver.GetWait().Until(d => _traillerButton.Enabled);
             _traillerButton.Click();
         }
 
-        public void CloseTrailer()
+        public bool TrailEnded()
         {
-            WebDriverExtensions.FindElement(driver, _trailerEnded, 125);
-            _closeTrailler.Click();
+            driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe[contains(@src,'trailer')]")));
+            return driver.GetWait().Until(d => driver.FindElement(_trailerEnded).Enabled);
         }
 
         public void AddMovieToFavorites()
         {
-            driver.GetWait().Until(d => _toWatchButton.Enabled);
+            driver.GetWait().Until(d => _toWatchButton.Displayed);
             _toWatchButton.Click();
         }
 
         public void GotoUserFolders()
         {
+            driver.GetWait().Until(d => _userFolders.Enabled);
             _userFolders.Click();
         }
     }

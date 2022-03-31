@@ -1,5 +1,4 @@
-﻿using System;
-using KinoPoiskAutomatedTests.TestData;
+﻿using KinoPoiskAutomatedTests.TestData;
 using KinoPoiskAutomatedTests.WebDriver;
 using OpenQA.Selenium;
 

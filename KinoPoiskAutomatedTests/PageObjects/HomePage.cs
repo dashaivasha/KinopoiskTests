@@ -1,8 +1,6 @@
 ﻿using System;
-using KinoPoiskAutomatedTests.TestData;
 using KinoPoiskAutomatedTests.WebDriver;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace KinoPoiskAutomatedTests.PageObjects
@@ -33,7 +31,6 @@ namespace KinoPoiskAutomatedTests.PageObjects
 
         public void EnterFilmName(string filmName)
         {
-
             WebDriverExtensions.FindElement(driver, _searchInput, 10);
             var input = driver.FindElement(_searchInput);
             input.SendKeys(filmName);

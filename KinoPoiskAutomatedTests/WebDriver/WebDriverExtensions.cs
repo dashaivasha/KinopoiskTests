@@ -6,8 +6,8 @@ namespace KinoPoiskAutomatedTests.WebDriver
 {
     public static class WebDriverExtensions
     {
-        public static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(3);
-        public static TimeSpan Timeout = TimeSpan.FromSeconds(125);
+        public static TimeSpan DefaultPollingInterval = TimeSpan.FromMilliseconds(2);
+        public static TimeSpan Timeout = TimeSpan.FromSeconds(135);
 
         public static WebDriverWait GetWait(
             this IWebDriver driver,
@@ -32,6 +32,7 @@ namespace KinoPoiskAutomatedTests.WebDriver
                 var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
                 return wait.Until(drv => drv.FindElement(by));
             }
+
             return driver.FindElement(by);
         }
     }
