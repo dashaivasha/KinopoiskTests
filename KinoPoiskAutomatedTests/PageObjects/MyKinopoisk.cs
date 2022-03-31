@@ -24,9 +24,9 @@ namespace KinoPoiskAutomatedTests.PageObjects
         public void DeleteFilm()
         {
             Actions actions = new Actions(driver);
-            actions.MoveToElement(driver.FindElement(By.XPath($"//div[@id='{GetFilmId()}']")));
-            var _deleteButton= By.XPath($"//*[@id='{GetFilmId()}']/a"); 
-            WebDriverExtensions.FindElement(driver,_deleteButton,20).Click();
+            var _deleteButton = By.XPath($"//*[@id='{GetFilmId()}']/a");
+            actions.MoveToElement(driver.FindElement(_deleteButton)).Build().Perform();
+            WebDriverExtensions.FindElement(driver,_deleteButton,10).Click();
         }
     }
 }
