@@ -8,6 +8,10 @@ namespace KinoPoiskAutomatedTests.PageObjects
         private By _userIdInput  => By.XPath("//*[@id='passp-field-login']");
         private IWebElement Submit => driver.FindElement(By.XPath("//*[@id='passp:sign-in']"));
 
+        public LoginPage() 
+        {
+        }
+
         public void EnterLoginAndSubmit(string login)
         {
             WebDriverExtensions.FindElement(driver,_userIdInput,Data.WaitTime).SendKeys(login);

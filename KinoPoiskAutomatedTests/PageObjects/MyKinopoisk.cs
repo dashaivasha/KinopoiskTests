@@ -7,6 +7,10 @@ namespace KinoPoiskAutomatedTests.PageObjects
 {
     public class MyKinopoiskPage : BasePage
     {
+        public MyKinopoiskPage() 
+        {
+        }
+
         private string GetFilmId()
         {
             var url = Data.FilmPage;

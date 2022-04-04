@@ -12,6 +12,10 @@ namespace KinoPoiskAutomatedTests.PageObjects
         private IWebElement _userFolders => driver.FindElement(By.XPath("//div[contains(@class,'userFolders')]/a"));
         private By _trailerEnded => By.XPath("//div[contains(@class,'autoplay')][1]");
 
+        public FilmPage() 
+        {
+        }
+
         public double GetRating()
         {
             var rating = _rating.GetAttribute("textContent");
@@ -28,6 +32,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
         public bool TrailEnded()
         {
             driver.SwitchTo().Frame(driver.FindElement(By.XPath("//iframe[contains(@src,'trailer')]")));
+
             return driver.GetWait().Until(d => driver.FindElement(_trailerEnded).Enabled);
         }
 

@@ -13,6 +13,10 @@ namespace KinoPoiskAutomatedTests.PageObjects
         private By _avatar = By.XPath("//div[contains(@class,'avatar')][1]");
         private By _searchInput =  By.XPath("//input[contains(@class,'search')]");
 
+        public HomePage() 
+        {
+        }
+
         public void PressLogInButton() => _myAccountButton.Click();
 
         public void PressLogOutButton()

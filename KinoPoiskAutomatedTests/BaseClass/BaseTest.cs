@@ -9,28 +9,27 @@ namespace KinoPoiskAutomatedTests.BaseClass
     public class BaseTest 
     {
         public TestDetails Data = JsonManager.GetTestData();
+        public IWebDriver WebDriver => DriverFactory.Driver;
         internal HomePage homePage = new HomePage();
         internal LoginPage loginPage = new LoginPage();
         internal PasswordPage passwordPage = new PasswordPage();
         internal FilmPage filmPage = new FilmPage();
         internal MyKinopoiskPage myKinopoisk = new MyKinopoiskPage();
-        protected IWebDriver WebDriver => DriverFactory.Driver;
+
+        [OneTimeSetUp]
+        public void Open()
+        {
+            WebDriver.Manage().Window.Maximize();
+            WebDriver.Navigate().GoToUrl(Data.HomePageUrl);
+        }
 
         [SetUp]
         public void Authorization()
         {
             homePage.PressLogInButton();
             loginPage.EnterLoginAndSubmit(Data.Login);
-            passwordPage.EnterPasswordAndEnter(Data.Password);
-        }
-
-        [OneTimeSetUp]
-        public void Open()
-        {
-            DriverFactory.InitalizerDriver();
-            WebDriver.Manage().Window.Maximize();
-            WebDriver.Navigate().GoToUrl(Data.HomePageUrl);
-        }
+            passwordPage.EnterPasswordAndSubmit(Data.Password);
+        } 
 
         [OneTimeTearDown]
         public void Close()
