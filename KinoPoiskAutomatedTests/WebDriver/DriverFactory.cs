@@ -30,16 +30,15 @@ namespace KinoPoiskAutomatedTests.WebDriver
         {
             var browser = Data.Browser;
             Enum.TryParse(browser, out BrowserNameEnum browserNameEnum);
-            int a = 1;
-            switch(a)
+            switch(browserNameEnum)
             {
-                case 1:
+                case BrowserNameEnum.Chrome:
                     if(_webDriver == null)
                     {
                         _webDriver = new ChromeDriver();
                     }
                     break;
-                case 2:
+                case BrowserNameEnum.Opera:
                     if (_webDriver == null)
                     {
                         _webDriver = new OperaDriver();
