@@ -8,9 +8,9 @@ namespace KinoPoiskAutomatedTests.PageObjects
     public class HomePage : BasePage
     {
         private IWebElement _myAccountButton => driver.FindElement(By.XPath("//button[contains(@class,'login')]"));
+        private IWebElement _searchButton => driver.FindElement(By.XPath("//div[contains(@class,'search')]/button"));
         private By _exitButton = By.XPath("//*[text()='Выйти']");
         private By _avatar = By.XPath("//div[contains(@class,'avatar')][1]");
-        private IWebElement _searchButton => driver.FindElement(By.XPath("//div[contains(@class,'search')]/button"));
         private By _searchInput =  By.XPath("//input[contains(@class,'search')]");
 
         public void PressLogInButton()

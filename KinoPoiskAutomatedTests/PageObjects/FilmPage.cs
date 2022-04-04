@@ -8,9 +8,9 @@ namespace KinoPoiskAutomatedTests.PageObjects
     {
         private IWebElement _rating => driver.FindElement(By.XPath("//span[contains(@class,'rating')][1]"));
         private IWebElement _traillerButton => driver.FindElement(By.XPath("//button[text()='Трейлер']/.."));
-        private By _trailerEnded => By.XPath("//div[contains(@class,'autoplay')][1]");
         private IWebElement _toWatchButton => driver.FindElement(By.XPath("//button[contains(@class,'ToWatch')]"));
         private IWebElement _userFolders => driver.FindElement(By.XPath("//div[contains(@class,'userFolders')]/a"));
+        private By _trailerEnded => By.XPath("//div[contains(@class,'autoplay')][1]");
 
         public double GetRating()
         {
