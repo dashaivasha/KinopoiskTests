@@ -19,6 +19,7 @@ namespace KinoPoiskAutomatedTests.BaseClass
         [OneTimeSetUp]
         public void Open()
         {
+            DriverFactory.InitalizerDriver();
             WebDriver.Manage().Window.Maximize();
             WebDriver.Navigate().GoToUrl(Data.HomePageUrl);
         }
