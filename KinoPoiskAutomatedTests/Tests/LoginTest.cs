@@ -16,7 +16,7 @@ namespace KinoPoiskAutomatedTests.Tests
         public void Login()
         {
             homePage.PressLogInButton();
-            passwordPage.EnterPasswordAndEnter(Data.Password);
+            passwordPage.EnterPasswordAndSubmit(Data.Password);
             Assert.True(homePage.IsExitExist());
         }
     }

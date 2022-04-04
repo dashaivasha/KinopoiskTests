@@ -13,10 +13,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
         private By _avatar = By.XPath("//div[contains(@class,'avatar')][1]");
         private By _searchInput =  By.XPath("//input[contains(@class,'search')]");
 
-        public void PressLogInButton()
-        {
-            _myAccountButton.Click();
-        }
+        public void PressLogInButton() => _myAccountButton.Click();
 
         public void PressLogOutButton()
         {
@@ -24,10 +21,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
             WebDriverExtensions.FindElement(driver,_exitButton,Data.WaitTime).Click();
         }
 
-        public bool IsExitExist()
-        {
-            return driver.GetWait().Until(d => driver.FindElement(_exitButton).Enabled);
-        }
+        public bool IsExitExist() => driver.GetWait().Until(d => driver.FindElement(_exitButton).Enabled);
 
         public void EnterFilmName(string filmName)
         {
@@ -36,10 +30,7 @@ namespace KinoPoiskAutomatedTests.PageObjects
             input.SendKeys(filmName);
         }
 
-        public void FindFilm()
-        {
-            _searchButton.Click();
-        }
+        public void FindFilm() => _searchButton.Click();
 
         public void SelectFilm()
         {
