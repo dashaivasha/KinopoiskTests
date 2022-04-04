@@ -1,20 +1,51 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using KinoPoiskAutomatedTests.Enums;
+using KinoPoiskAutomatedTests.TestData;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Opera;
 
 namespace KinoPoiskAutomatedTests.WebDriver
 {
     public class DriverFactory
     {
         private static IWebDriver _webDriver;
+        public static TestDetails Data = JsonManager.GetTestData();
 
-        public static IWebDriver GetDriver()
+        public static IWebDriver Driver
         {
-            if (_webDriver == null)
+            get
             {
-                _webDriver = new ChromeDriver();
+                if (_webDriver == null)
+                    throw new NullReferenceException("The WebDriver instance was not initialize. You should call the metod InitilizerDriver()");
+                return _webDriver;
             }
+            set
+            {
+                _webDriver = value;
+            }
+         }
 
-            return _webDriver;
+        public static void InitalizerDriver()
+        {
+            var browser = Data.Browser;
+            Enum.TryParse(browser, out BrowserNameEnum browserNameEnum);
+            int a = 1;
+            switch(a)
+            {
+                case 1:
+                    if(_webDriver == null)
+                    {
+                        _webDriver = new ChromeDriver();
+                    }
+                    break;
+                case 2:
+                    if (_webDriver == null)
+                    {
+                        _webDriver = new OperaDriver();
+                    }
+                    break;
+            }
         }
     }  
 }

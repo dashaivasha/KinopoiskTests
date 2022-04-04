@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class FilmPage : DefaultPage
+    public class FilmPage : BasePage
     {
         private IWebElement _rating => driver.FindElement(By.XPath("//span[contains(@class,'rating')][1]"));
         private IWebElement _traillerButton => driver.FindElement(By.XPath("//button[text()='Трейлер']/.."));

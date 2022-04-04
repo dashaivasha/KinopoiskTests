@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class DefaultPage
+    public class BasePage
     {
-        internal IWebDriver driver = DriverFactory.GetDriver();
+        internal IWebDriver driver = DriverFactory.Driver;
         internal TestDetails Data = JsonManager.GetTestData();
     }
 }

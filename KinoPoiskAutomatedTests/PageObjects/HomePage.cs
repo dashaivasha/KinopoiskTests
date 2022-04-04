@@ -5,7 +5,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class HomePage : DefaultPage
+    public class HomePage : BasePage
     {
         private IWebElement _myAccountButton => driver.FindElement(By.XPath("//button[contains(@class,'login')]"));
         private By _exitButton = By.XPath("//*[text()='Выйти']");

@@ -6,5 +6,6 @@
       "Login": "internshiptestovitch",
       "Password": "testpasstest111",
       "Rating": "4",
-      "WaitTime": 10
+      "WaitTime": 10,
+      "Browser": "Chrome"
     }

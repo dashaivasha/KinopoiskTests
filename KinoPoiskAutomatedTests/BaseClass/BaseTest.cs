@@ -2,6 +2,7 @@
 using KinoPoiskAutomatedTests.TestData;
 using KinoPoiskAutomatedTests.WebDriver;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.BaseClass
 {
@@ -13,6 +14,7 @@ namespace KinoPoiskAutomatedTests.BaseClass
         internal PasswordPage passwordPage = new PasswordPage();
         internal FilmPage filmPage = new FilmPage();
         internal MyKinopoiskPage myKinopoisk = new MyKinopoiskPage();
+        protected IWebDriver WebDriver => DriverFactory.Driver;
 
         [SetUp]
         public void Authorization()
@@ -25,16 +27,15 @@ namespace KinoPoiskAutomatedTests.BaseClass
         [OneTimeSetUp]
         public void Open()
         {
-            var driver = DriverFactory.GetDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(Data.HomePageUrl);
+            DriverFactory.InitalizerDriver();
+            WebDriver.Manage().Window.Maximize();
+            WebDriver.Navigate().GoToUrl(Data.HomePageUrl);
         }
 
         [OneTimeTearDown]
         public void Close()
         {
-            var driver = DriverFactory.GetDriver();
-            driver.Quit();
+            WebDriver.Quit();
         }
     }
 }

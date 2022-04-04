@@ -5,7 +5,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class MyKinopoiskPage : DefaultPage
+    public class MyKinopoiskPage : BasePage
     {
         private string GetFilmId()
         {

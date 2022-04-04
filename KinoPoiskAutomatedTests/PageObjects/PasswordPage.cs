@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class PasswordPage : DefaultPage
+    public class PasswordPage : BasePage
     {
         private By _passwordInput => By.XPath("//*[@id='passp-field-passwd']");
         private IWebElement _signInButton => driver.FindElement(By.XPath("//*[@id='passp:sign-in']"));
