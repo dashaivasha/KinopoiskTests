@@ -1,0 +1,11 @@
+
+    {
+      "HomePageUrl": "https://www.kinopoisk.ru/",
+      "FilmPage":"https://www.kinopoisk.ru/film/1238476/",
+      "FilmName": "Бесконечность",
+      "Login": "internshiptestovitch",
+      "Password": "testpasstest111",
+      "Rating": "4",
+      "WaitTime": 10,
+      "Browser": "Chrome"
+    }

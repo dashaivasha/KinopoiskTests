@@ -1,18 +1,21 @@
-﻿using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
+﻿using KinoPoiskAutomatedTests.WebDriver;
+using OpenQA.Selenium;
 
 namespace KinoPoiskAutomatedTests.PageObjects
 {
-    public class PasswordPage
+    public class PasswordPage : BasePage
     {
-        private IWebDriver driver;
+        private By _passwordInput => By.XPath("//*[@id='passp-field-passwd']");
+        private IWebElement _signInButton => driver.FindElement(By.XPath("//*[@id='passp:sign-in']"));
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='passp-field-passwd']")]
-        [CacheLookup]
-        public IWebElement Password { get; set; }
+        public PasswordPage() 
+        {
+        }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='passp:sign-in']")]
-        [CacheLookup]
-        public IWebElement SignIn { get; set; }       
+        public void EnterPasswordAndSubmit(string password)
+        {
+            WebDriverExtensions.FindElement(driver,_passwordInput,20).SendKeys(password);
+            _signInButton.Submit();
+        }
     }
 }
